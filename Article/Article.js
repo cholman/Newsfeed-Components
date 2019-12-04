@@ -85,6 +85,9 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'test article'
   }
 ];
 
@@ -131,6 +134,8 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   p1.textContent = firstParagraph;
   p2.textContent = secondParagraph;
   p3.textContent = thirdParagraph;
+  span.textContent = "\u25bc";
+
 
   articleDiv.appendChild(pDate);
   articleDiv.appendChild(h2);
@@ -141,9 +146,9 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   
 
 
-  // span.addEventListener('click', () => {
-
-  // })
+  span.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open');
+ })
   return articleDiv;
 }
 
@@ -152,8 +157,3 @@ const container = document.querySelector(".articles");
 data.forEach( article => {
   container.appendChild(createArticle(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
 })
-
-
-
-// createArticle(data[0].title, data[0].date, data[0].firstParagraph, data[0].secondParagraph, data[0].thirdParagraph);
-
