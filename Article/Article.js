@@ -85,6 +85,9 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'test article'
   }
 ];
 
@@ -112,3 +115,45 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  const articleDiv = document.createElement("div");
+  const pDate = document.createElement("p");
+  const h2 = document.createElement("h2");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const span = document.createElement("span");
+
+  articleDiv.classList.add("article");
+  pDate.classList.add("date");
+  span.classList.add("expandButton");
+
+  pDate.textContent = date;
+  h2.textContent = title;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+  span.textContent = "\u25bc";
+
+
+  articleDiv.appendChild(pDate);
+  articleDiv.appendChild(h2);
+  articleDiv.appendChild(p1);
+  articleDiv.appendChild(p2);
+  articleDiv.appendChild(p3);
+  articleDiv.appendChild(span);
+  
+
+
+  span.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open');
+ })
+  return articleDiv;
+}
+
+const container = document.querySelector(".articles");
+
+data.forEach( article => {
+  container.appendChild(createArticle(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
+})
